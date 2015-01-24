@@ -11,6 +11,11 @@ rm -v "$DIR/$PREFIX"*.jpg
 curl -H "Referer: http://www.zol.pl/webcam/" -o "$FILE" http://www.zakopaneonline.eu/webcam3/duze/kasprowy.jpg
 #wget -o /dev/null -q -O "$FILE" http://www.czteryporyroku.pl/kamery/apartamenty_zakopane.jpg 2>/dev/null
 
+sleep 5
+
 # load new desktop background image
-gsettings set org.gnome.desktop.background picture-uri file://$FILE
+echo "Setting wallpaper to $FILE"
+PID=$(pgrep gnome-session)
+export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$PID/environ|cut -d= -f2-)
+gsettings set org.gnome.desktop.background picture-uri "file://$FILE"
 

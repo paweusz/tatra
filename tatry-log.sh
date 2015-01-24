@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/home/paweusz/Projects/tatry.sh >> /tmp/tatry.log
+/home/paweusz/Projects/tatra/tatry.sh >> /tmp/tatry.log
 
